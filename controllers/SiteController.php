@@ -97,7 +97,7 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->redirect('/site/about');
     }
 
     /**
@@ -125,7 +125,8 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('about');
+        $products = Product::find()->where('')->orderBy(['time_stamp'=> SORT_DESC])->limit(5)->all();
+        return $this->render('about',['products'=>$products]);
     }
 
     public function actionCatalog(){

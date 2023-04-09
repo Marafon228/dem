@@ -40,19 +40,26 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => '@w
 
     if (Yii::$app->user->isGuest){
 
+        $items[] = ['label' => 'О нас', 'url' => ['/site/about']];
+        $items[] = ['label' => 'Каталог', 'url' => ['/site/catalog']];
+        $items[] = ['label' => 'Где нас найти?', 'url' => ['/site/contact']];
+
         $items[] = ['label' => 'Авторизация', 'url' => ['/site/login']];
         $items[] = ['label' => 'Регистрация', 'url' => ['/user/create']];
 
     }
     else {
         if (Yii::$app->user->identity->admin == 1){
+            $items[] = ['label' => 'О нас', 'url' => ['/site/about']];
+            $items[] = ['label' => 'Каталог', 'url' => ['/site/catalog']];
+            $items[] = ['label' => 'Где нас найти?', 'url' => ['/site/contact']];
             $items[] = ['label' => 'Административная панель', 'url' => ['/admin']];
         }
         else {
-            $items[] = ['label' => 'Регистрация', 'url' => ['/user/create']];
-            $items[] = ['label' => 'Регистрация', 'url' => ['/user/create']];
-            $items[] = ['label' => 'Регистрация', 'url' => ['/user/create']];
-            $items[] = ['label' => 'Личный кабинет', 'url' => ['/user/create']];
+            $items[] = ['label' => 'О нас', 'url' => ['/site/about']];
+            $items[] = ['label' => 'Каталог', 'url' => ['/site/catalog']];
+            $items[] = ['label' => 'Где нас найти?', 'url' => ['/site/contact']];
+            $items[] = ['label' => 'Личный кабинет', 'url' => ['/lk']];
         }
         $items[] = '<li class="nav-item">'
             . Html::beginForm(['/site/logout'])

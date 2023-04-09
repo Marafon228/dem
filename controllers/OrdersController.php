@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Basket;
 use app\models\Orders;
 use app\models\OrdersSearch;
 use Yii;
@@ -66,6 +67,37 @@ class OrdersController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+
+    public function actionCheckout() {
+        //$this->setMetaTags('Оформление заказа');
+        $basket = (new Basket())->getBasket();
+
+        $order = new Orders();
+        $order->user_id = Yii::$app->user->id;
+        $count = 0;
+        foreach ($basket['products'] as $item){
+            $count = $count + $item['count'];
+        }
+        $order->count = $count;
+
+        if ($this->request->isPost) {
+            //$model->count = $carts['count'];
+            if ($order->load($this->request->post()) && $order->save()) {
+                $session = Yii::$app->session;
+                $session->open();
+                $session->set('basket', []);
+                return $this->redirect(['/']);
+            }
+        } else {
+            $order->loadDefaultValues();
+        }
+
+
+
+
+        return $this->render('checkout', ['order' => $order]);
     }
 
     /**

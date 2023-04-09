@@ -38,9 +38,13 @@ $this->params['breadcrumbs'][] = $this->title;
             //'user_id',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Orders $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                'template' => '{delete}',
+                'buttons'=>
+                    [
+                        'update' => function ($url, $model, $key) {
+                            return Html::a('<span class="glyphicon glyphicon-ok"></span>',);
+                        }
+                    ],
             ],
         ],
     ]); ?>

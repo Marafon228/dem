@@ -60,7 +60,7 @@ class LkController extends Controller
     public function actionIndex()
     {
         $searchModel = new OrdersSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider = $searchModel->searchForUser($this->request->queryParams,Yii::$app->user->id);
 
 
         return $this->render('index', [

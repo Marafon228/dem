@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <?= $form->field($model, 'time_stamp')->textInput() ?>
+    <?php /*= $form->field($model, 'time_stamp')->textInput()*/ ?>
 
     <?= $form->field($model, 'country_pr')->textInput(['maxlength' => true]) ?>
 

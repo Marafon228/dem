@@ -67,7 +67,7 @@ use yii\helpers\Url;
                                     <tr>
                                         <td>
                                             <button type="submit"
-                                                    class="btn btn-primary">
+                                                    class="btn btn-success">
                                                 <i class="fa fa-refresh" aria-hidden="true"></i>
                                                 Пересчитать
                                             </button>
@@ -84,8 +84,8 @@ use yii\helpers\Url;
                     <?php endif; ?>
                 </div>
                 <?php if (!empty($basket)): ?>
-                    <a href="<?= Url::to(['order/checkout']); ?>"
-                       class="btn btn-warning pull-right">
+                    <a href="<?= Url::to(['orders/checkout']); ?>"
+                       class="btn btn-success">
                         Оформить заказ
                     </a>
                 <?php endif; ?>
